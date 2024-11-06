@@ -14,6 +14,7 @@ def image_sharpening(image):
                                   [-1, -1, -1]])
     sharpened = cv2.filter2D(image, -1, kernel_sharpening)
     return sharpened
+# this is a test commit section
 
 # Remove black borders function
 def remove_black_region(result):
