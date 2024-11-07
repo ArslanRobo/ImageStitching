@@ -108,7 +108,6 @@ def stitch_images(uploaded_files, feature_extractor):
     images = [cv2.cvtColor(np.array(Image.open(file)), cv2.COLOR_RGB2BGR) for file in uploaded_files]
     if len(images) == 0:
         return None
-    # feature_extractor = 'orb'
     target_brightness = calculate_target_brightness(images)
     adjusted_images = global_brightness_adjustment(images, target_brightness)
     stitched_image = adjusted_images[0]
@@ -119,6 +118,7 @@ def stitch_images(uploaded_files, feature_extractor):
     return cv2.cvtColor(stitched_image, cv2.COLOR_BGR2RGB)
   
 # Gradio interface with feature extractor selector
+# Works well for two input images
 with gr.Blocks() as demo:
     gr.Markdown("## Image Stitching App with Feature Extractor Selection")
     image_input = gr.Files(label="Upload Images", type="filepath")
